@@ -6,7 +6,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     robot_name_in_model = 'fishbot'
-    package_name = 'rf-robot'
+    package_name = 'rf_robot'
     urdf_name = "fishbot_gazebo.urdf"
 
     ld = LaunchDescription()
@@ -65,7 +65,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        # arguments=['-d', default_rviz_config_path]
+        parameters=[{'use_sim_time': True}],
         )
 
     ld.add_action(start_gazebo_cmd)
