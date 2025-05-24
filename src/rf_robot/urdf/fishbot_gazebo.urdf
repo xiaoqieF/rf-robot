@@ -188,14 +188,45 @@
     <joint name="caster_joint" type="fixed">
         <parent link="base_link" />
         <child link="caster_link" />
-        <origin xyz="0.06 0.0 -0.076" />
+        <origin xyz="0.07 0.0 -0.076" />
         <axis xyz="0 1 0" />
     </joint>
-
 
     <gazebo reference="caster_link">
         <material>Gazebo/Black</material>
     </gazebo>
+
+    <link name="caster_link1">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57079 0 0" />
+            <geometry>
+                <sphere radius="0.016" />
+            </geometry>
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 0.5" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57079 0 0" />
+            <geometry>
+                <sphere radius="0.016" />
+            </geometry>
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 0.5" />
+            </material>
+        </collision>
+        <inertial>
+            <mass value="0.02" />
+            <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036" />
+        </inertial>
+    </link>
+
+    <joint name="caster_joint1" type="fixed">
+        <parent link="base_link" />
+        <child link="caster_link1" />
+        <origin xyz="-0.07 0.0 -0.076" />
+        <axis xyz="0 1 0" />
+    </joint>
 
     <gazebo reference="caster_link">
         <mu1 value="0.0" />
@@ -203,6 +234,18 @@
         <kp value="1000000.0" />
         <kd value="10.0" />
         <!-- <fdir1 value="0 0 1"/> -->
+    </gazebo>
+
+    <gazebo reference="caster_link1">
+        <mu1 value="0.0" />
+        <mu2 value="0.0" />
+        <kp value="1000000.0" />
+        <kd value="10.0" />
+        <!-- <fdir1 value="0 0 1"/> -->
+    </gazebo>
+
+    <gazebo reference="caster_link1">
+        <material>Gazebo/Black</material>
     </gazebo>
 
     <gazebo reference="laser_link">
@@ -279,7 +322,7 @@
             <gz_frame_id>laser_link</gz_frame_id>
             <always_on>true</always_on>
             <visualize>true</visualize>
-            <update_rate>10</update_rate>
+            <update_rate>20</update_rate>
             <pose>0 0 0.075 0 0 0</pose>
             <lidar>
                 <scan>
